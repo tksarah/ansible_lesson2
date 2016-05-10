@@ -1,0 +1,34 @@
+    - block:
+        - name: Add user
+          user: name={{ user }} password={{ password }} shell=/bin/bash groups=docker append=yes
+
+        - name: Copy files
+          copy: src=./{{ ldir }} dest=/home/{{ user }} owner={{ user }} group={{ user }} mode=0644
+
+        - name: Change modef for a ***.sh
+          file: path={{ item }} mode=0755
+          with_items:
+            - /home/{{ user }}/{{ ldir }}/tools/setup.sh
+            - /home/{{ user }}/{{ ldir }}/tools/initial.sh
+            - /home/{{ user }}/{{ ldir }}/login.sh
+
+        - name: Add a line in .bashrc
+          lineinfile: dest=/home/{{ user }}/.bashrc line="alias docker=\'echo \"You cannot docker command.\"\'"
+
+      tags: users
+      become_user: root
+      become: true
+
+    - block:
+        - name: Run containers
+          shell: "bash /home/{{ user }}/{{ ldir }}/tools/initial.sh"
+          register: output
+
+        - debug: msg="{{ output.stdout }}"
+
+        - name: Delete initial.sh
+          file: path=/home/{{ user }}/{{ ldir }}/tools/initial.sh state=absent
+
+      tags: handson
+      become_user: "{{ user }}"
+      become: true

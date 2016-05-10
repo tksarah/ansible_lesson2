@@ -1,0 +1,12 @@
+    - block:
+        - name: Run Reverse Proxy on my container
+          docker:
+            name: "rproxy"
+            image: tksarah/rproxy
+            detach: true
+            state: started
+            ports:
+              - "80:80"
+            tty: true
+
+      tags: rproxy
