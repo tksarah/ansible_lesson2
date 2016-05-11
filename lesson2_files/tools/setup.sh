@@ -2,7 +2,7 @@
 
 INVENTORY=$HOME/lesson2_files/tools/hosts
 PLAYBOOK=$HOME/lesson2_files/tools/playbook.yml
-HOSTADDR="192.168.0.123"
+HOSTADDR="192.168.166.210"
 WP="${USER}_wordpress"
 
 case $1 in
