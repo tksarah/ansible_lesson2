@@ -24,7 +24,7 @@
           shell: "bash /home/{{ user }}/{{ ldir }}/tools/initial.sh"
           register: output
 
-        - debug: msg="{{ output.stdout }}"
+        - debug: msg="{{ output.stdout_lines }}"
 
         - name: Delete initial.sh
           file: path=/home/{{ user }}/{{ ldir }}/tools/initial.sh state=absent
