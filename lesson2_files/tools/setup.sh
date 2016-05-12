@@ -10,7 +10,7 @@ case $1 in
                 echo
                 echo "Setup ..."
                 ansible-playbook -i $INVENTORY -t bootup -e user=$USER $PLAYBOOK $2
-                CPORT=`/bin/docker inspect --format='{{range $p, $conf := .NetworkSettings.Ports}} {{$p}} -> {{(index $conf 0).HostPort}} {{end}}' ${USER}_target | gawk '{ print $3 }'`
+                CPORT=`/bin/docker inspect --format='{{range $p, $conf := .NetworkSettings.Ports}} {{$p}} -> {{(index $conf 0).HostPort}} {{end}}' ${USER}_l2_target | gawk '{ print $3 }'`
                 echo
                 echo "========================================================="
                 echo
@@ -34,7 +34,7 @@ case $1 in
                 ansible-playbook -i $INVENTORY -t remove -e user=$USER $PLAYBOOK $2
                 sleep 1
                 ansible-playbook -i $INVENTORY -t bootup -e user=$USER $PLAYBOOK $2
-                CPORT=`/bin/docker inspect --format='{{range $p, $conf := .NetworkSettings.Ports}} {{$p}} -> {{(index $conf 0).HostPort}} {{end}}' ${USER}_target | gawk '{ print $3 }'`
+                CPORT=`/bin/docker inspect --format='{{range $p, $conf := .NetworkSettings.Ports}} {{$p}} -> {{(index $conf 0).HostPort}} {{end}}' ${USER}_l2_target | gawk '{ print $3 }'`
                 echo
                 echo "========================================================="
                 echo
