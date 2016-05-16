@@ -19,8 +19,8 @@ EOS
 for USER in `cat userlist`
 	do
 
-	CPORT=`/bin/docker inspect --format='{{range $p, $conf := .NetworkSettings.Ports}} {{$p}} -> {{(index $conf 0).HostPort}} {{end}}' ${USER}_l1_target | gawk '{ print $3 }'`
-	#CIP=`/bin/docker inspect --format '{{.NetworkSettings.IPAddress}}' "${USER}_l1_target"`
+	CPORT=`/bin/docker inspect --format='{{range $p, $conf := .NetworkSettings.Ports}} {{$p}} -> {{(index $conf 0).HostPort}} {{end}}' ${USER}_l2_target | gawk '{ print $3 }'`
+	#CIP=`/bin/docker inspect --format '{{.NetworkSettings.IPAddress}}' "${USER}_l2_target"`
 
 	echo "    location /${USER}_wordpress/ {" >> $FILE
 	echo "        proxy_pass http://$HOST:$CPORT/wordpress/;" >> $FILE
