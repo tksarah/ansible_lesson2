@@ -15,6 +15,8 @@
         - name: Add a line in .bashrc
           lineinfile: dest=/home/{{ user }}/.bashrc line="alias docker=\'echo \"You cannot docker command.\"\'"
 
+        - shell: echo "{{ user }}" >> userlist chdir=dockerfile/
+
       tags: users
       become_user: root
       become: true

@@ -12,7 +12,7 @@
         - name: boot ansible target container
           docker:
             name: "{{ tname }}"
-            image: tksarah/edu_ansible_target
+            image: tksarah/edu_ansible_target_pkged
             detach: true
             state: started
             command: "/usr/sbin/sshd -D"
@@ -35,7 +35,7 @@
         - name:  remove ansible target container
           docker:
             name: "{{ tname }}"
-            image: tksarah/edu_ansible_target
+            image: tksarah/edu_ansible_target_pkged
             state: "{{ ops }}"
 
         - name: remove ansible host container

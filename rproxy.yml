@@ -1,4 +1,7 @@
     - block:
+        - name: Build rproxy image
+          docker_image: path="./dockerfile" name="tksarah/rproxy" state=build
+
         - name: Run Reverse Proxy on my container
           docker:
             name: "rproxy"
@@ -10,3 +13,10 @@
             tty: true
 
       tags: rproxy
+
+    - name: Clean up
+      file: path=./dockerfile/{{ item }} state=absent
+      with_items:
+        - myproxy
+        - userlist
+

@@ -2,8 +2,6 @@
   gather_facts: no
 
   tasks:
-    - include: rproxy.yml
-
     - include_vars: vars/userlist.yml
 
     - include: users.yml
@@ -15,3 +13,6 @@
       with_items:
         - "{{ group1 }}"
 
+    - shell: /root/ansible_lesson2/dockerfile/create_proxy.sh chdir=dockerfile/ creates=myproxy
+
+    - include: rproxy.yml
