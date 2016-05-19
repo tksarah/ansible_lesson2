@@ -4,7 +4,7 @@
   vars:
     tname: "{{ user }}_l2_target"
     hname: "{{ user }}_l2_host"
-    port: "80"
+    port: "{{ cport }}:80"
     ops: "absent"
 
   tasks:
