@@ -2,7 +2,7 @@
 
 HOME='/root'
 
-cp $HOME/sample/playbook.yml $HOME/
+cp -r $HOME/sample_roles/{roles,site.yml} $HOME/
 echo "[target]" > $HOME/hosts
 echo "$WEB_PORT_80_TCP_ADDR" >> $HOME/hosts
 
