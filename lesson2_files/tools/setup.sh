@@ -2,7 +2,7 @@
 
 INVENTORY=$HOME/lesson2_files/tools/hosts
 PLAYBOOK=$HOME/lesson2_files/tools/playbook.yml
-HOSTADDR="192.168.0.153"
+HOST="HOSTADDR"
 WP="${USER}_wordpress"
 PORT="INPUTPORT"
 
@@ -17,7 +17,7 @@ case $1 in
                 echo
                 echo "Try the link below after executing the ansible playbook."
                 echo
-                echo "http://$HOSTADDR/$WP/ ."
+                echo "http://$HOST/$WP/ ."
                 echo
                 echo "========================================================="
                 echo ;;
@@ -41,7 +41,7 @@ case $1 in
                 echo
                 echo "Try the link below after executing the ansible playbook."
                 echo
-                echo "http://$HOSTADDR/$WP/ ."
+                echo "http://$HOST/$WP/ ."
                 echo
                 echo "========================================================="
                 echo ;;

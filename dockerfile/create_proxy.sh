@@ -1,6 +1,6 @@
 #!/bin/bash
 
-HOST="192.168.166.210"
+HOST="HOSTADDR"
 FILE="myproxy"
 
 cat << EOS > $FILE
